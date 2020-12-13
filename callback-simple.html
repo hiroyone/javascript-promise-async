@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Promise Simple</h2>
+
+<p id="promise-demo"></p>
+
+<script>
+
+function myDisplayer(some) {
+  document.getElementById("promise-demo").innerHTML = some;
+}
+  // Equivalent classic Callback method
+  function myPromise(myCallback) {
+    setTimeout(function(){
+    // 0 or 1 with equal probability
+    let x = Math.round(Math.random())
+    if (x == 0) {
+      myCallback("OK");
+    } else {
+      myCallback("Error);
+    }
+    }, 1000);
+  }
+  myPromise(myDisplayer);
+
+</script>
+
+</body>
+</html>

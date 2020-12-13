@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Promise All</h2>
+
+<p id="promise-demo"></p>
+
+<script>
+
+function myDisplayer(some) {
+  document.getElementById("promise-demo").innerHTML = some;
+}
+
+let myPromise1 = new Promise(function(myResolve, myReject) {
+    console.log("Promise1");
+    setTimeout(function(){myResolve("OK1");}, 100);
+});
+
+let myPromise2 = new Promise(function(myResolve, myReject) {
+    console.log("Promise2");
+    setTimeout(function(){myResolve("OK2");}, 200);
+    // To let Promise all catch error 
+    // setTimeout(function(){myReject("Error");}, 300);
+});
+
+let myPromise3 = new Promise(function(myResolve, myReject) {
+    console.log("Promise3");
+    setTimeout(function(){myResolve("OK3");}, 300);
+});
+
+Promise.all([myPromise1, myPromise2, myPromise3]).then(
+  function(value) {myDisplayer(value);},
+  // or use catch syntax
+  function(error) {myDisplayer(error);}
+);
+</script>
+
+</body>
+</html>

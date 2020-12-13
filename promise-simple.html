@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript Promise Simple</h2>
+
+<p id="promise-demo"></p>
+
+<script>
+
+function myDisplayer(some) {
+  document.getElementById("promise-demo").innerHTML = some;
+}
+
+// Make a promise function so that promise is renewed everytime
+let myPromise = () => new Promise(function(myResolve, myReject) {
+// let myPromise = new Promise(function(myResolve, myReject) {
+    let x
+    
+    setTimeout(function(){
+    // 0 or 1 with equal probability
+    x = Math.round(Math.random())
+    if (x == 0) {
+        myResolve("OK");
+    } else {
+        myReject("Error");
+    }
+    }, 1000);
+});
+
+myPromise().then(
+  // Arrow Function
+  // value => myDisplayer(value);
+  function(value) {myDisplayer(value);},
+  // or use catch syntax
+  function(error) {myDisplayer(error);}
+);
+
+</script>
+
+</body>
+</html>
